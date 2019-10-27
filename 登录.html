@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录界面</title>
+</head>
+
+<body>
+	<div class="box1">
+	<h1>登录页面</h1>
+	<from action="mailto:2385553976@qq.com" method="post" name="from1">
+	<h3>用户名:</h3>
+	<input name="number" type="text" id="number" size="20" maxlength="10" minlength="10"/>
+	<h3>密码:</h3>
+	<input name="password" type="password" id="password" size="20" maxlength="20" title="字母+数字"/>
+	<div id="msg"></div>
+	<br>
+	<input type="submit" id="submit" name="submit" value="登录" onClick="checkuser()"/>
+
+	<input name="register" type="button" value="注册" onClick="location.href='#'"/>
+	</from>
+	<br>
+	<a href="#">忘记密码</a>
+	</div>
+	<script>
+	function checkuser()
+	{
+		var re= /^[a-zA-Z0-9]*$/;
+		var ra=/^[0-9]*$/;
+		var p01 =document.getElementById("number");
+		var p02 =p01.value; 
+		var p03 =document.getElementById("password");
+		var p04 =p03.value;
+		var msg =document.getElementById("msg");
+		if(p02==""||p04=="")
+			{
+				msg.innerHTML="请输入学号或密码";
+				msg.style.color="red";
+			}
+		else if(re.test(p04)&&ra.test(p02))
+			{
+				msg.innerHTML="";
+			}
+		else if(p02>=1111111111&&p02<=9999999999)
+			{
+				msg.innerHTML="";
+			}
+		else
+			{
+				msg.innerHTML="请输入正确的学号或密码";
+				msg.style.color="red";
+			}
+	}
+   </script>
+</body>
+</html>
