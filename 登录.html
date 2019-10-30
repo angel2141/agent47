@@ -8,16 +8,15 @@
 <body>
 	<div class="box1">
 	<h1>登录页面</h1>
-	<from action="mailto:2385553976@qq.com" method="post" name="from1">
-	<h3>用户名:</h3>
-	<input name="number" type="text" id="number" size="20" maxlength="10" minlength="10"/>
+	<from action="#" method="post" name="from1">
+	<h3>学号:</h3>
+	<input name="number" type="text" id="number" size="20" maxlength="10"/><span id="spa1"></span>
 	<h3>密码:</h3>
-	<input name="password" type="password" id="password" size="20" maxlength="20" title="字母+数字"/>
-	<div id="msg"></div>
+	<input name="password" type="password" id="password" size="20" maxlength="20" title="字母+数字"/><span id="spa2"></span>
 	<br>
 	<input type="submit" id="submit" name="submit" value="登录" onClick="checkuser()"/>
 
-	<input name="register" type="button" value="注册" onClick="location.href='#'"/>
+	<input name="register" type="button" value="注册" onClick="location.href='注册.html'"/>
 	</from>
 	<br>
 	<a href="#">忘记密码</a>
@@ -25,31 +24,40 @@
 	<script>
 	function checkuser()
 	{
-		var re= /^[a-zA-Z0-9]*$/;
 		var ra=/^[0-9]*$/;
+		var regPsd = /^(([a-zA-Z]+[0-9]+)|([0-9]+[a-zA-Z]+))[A-Za-z0-9]*$/;
 		var p01 =document.getElementById("number");
 		var p02 =p01.value; 
 		var p03 =document.getElementById("password");
-		var p04 =p03.value;
-		var msg =document.getElementById("msg");
-		if(p02==""||p04=="")
-			{
-				msg.innerHTML="请输入学号或密码";
-				msg.style.color="red";
-			}
-		else if(re.test(p04)&&ra.test(p02))
-			{
-				msg.innerHTML="";
-			}
-		else if(p02>=1111111111&&p02<=9999999999)
-			{
-				msg.innerHTML="";
-			}
+        var p04 =p03.value;
+		var sp01=document.getElementById("spa1");
+		var sp02=document.getElementById("spa2");
+		//学号判断
+		if(p02==""||p02.length<10||!(ra.test(p02)))
+		{
+			p01.style.borderColor="red";
+			sp01.style.color="red";
+			sp01.innerHTML="请输入正确的学号";
+		}
 		else
-			{
-				msg.innerHTML="请输入正确的学号或密码";
-				msg.style.color="red";
-			}
+		{
+			p01.style.borderColor="black";
+			sp01.style.color="white";
+			sp01.innerHTML="";
+		}
+		//密码判断
+		if(p04==""||p04.length>16||!(regPsd.test(p04)))
+		{
+			p03.style.borderColor="red";
+			sp02.style.color="red";
+			sp02.innerHTML="请输入正确的密码"
+		}
+		else
+		{
+			p03.style.borderColor="black";
+			sp02.style.color="white";
+			sp02.innerHTML="";
+		}
 	}
    </script>
 </body>
