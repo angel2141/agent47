@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册界面</title>
+</head>
+
+<body>
+	<div class="box1">
+	<h1>注册页面</h1>
+	<from action="#" method="post" name="from1">
+	<h3>学号:</h3>
+	<input name="number" type="text" id="number" size="20" maxlength="10"/><span id="spa1"></span>
+	<h3>密码:</h3>
+    <input name="password" type="password" id="password" size="20" maxlength="20" title="字母+数字"/><span id="spa2"></span>
+    <h3>确认密码:</h3>
+    <input name="password1" type="password" id="password1" size="20" maxlength="20" title="字母+数字"/><span id="spa3"></span>
+    <h3>身份证号码:</h3>
+	<input name="number1" type="text" id="number1" size="20" maxlength="18"/><span id="spa4"></span>
+    <h3>学院：</h3>
+    <select>
+        <optgroup label="学院">
+        <option value="电力">电力学院</option>
+        <option value="能动">能源与动力学院</option>
+        <option value="自动化">自动化学院</option>
+        <option value="机械">机械学院</option>
+        <option value="信息">信息学院</option>
+        <option value="新能源">新能源学院</option>
+        <option value="经管">经济与管理学院</option>
+        <option value="法学">法学院</option>
+        <option value="国教">国际教育学院学院</option>
+        <option value="继续">继续教育学院</option>
+        </optgroup>
+    </select>
+	<br>
+	<input type="submit" id="submit" name="submit" value="提交" onClick="checkuser()"/>
+	</from>
+	<br>
+	</div>
+	<script>
+	function checkuser()
+	{
+		var ra=/^[0-9]*$/;
+		var regPsd = /^(([a-zA-Z]+[0-9]+)|([0-9]+[a-zA-Z]+))[A-Za-z0-9]*$/;
+		var p01 =document.getElementById("number");
+		var p02 =p01.value; 
+		var p03 =document.getElementById("password");
+        var p04 =p03.value;
+        var p05 =document.getElementById("password1");
+		var p06 =p05.value;
+		var p07=document.getElementById("number1");
+		var p08=p07.value;
+		var sp01=document.getElementById("spa1");
+		var sp02=document.getElementById("spa2");
+		var sp03=document.getElementById("spa3");
+		var sp04=document.getElementById("spa4");
+		//学号判断
+		if(p02==""||p02.length<10||!(ra.test(p02)))
+		{
+			p01.style.borderColor="red";
+			sp01.style.color="red";
+			sp01.innerHTML="请输入正确的学号";
+		}
+		else
+		{
+			p01.style.borderColor="black";
+			sp01.style.color="white";
+			sp01.innerHTML="";
+		}
+		//密码判断
+		if(p04==""||p04.length>16||!(regPsd.test(p04)))
+		{
+			p03.style.borderColor="red";
+			sp02.style.color="red";
+			sp02.innerHTML="请输入正确的密码(请使用字母数字组合 不支持特殊符号 长度不超过16个字符)"
+		}
+		else
+		{
+			p03.style.borderColor="black";
+			sp02.style.color="white";
+			sp02.innerHTML="";
+		}
+		//密码是否相等判断
+		if(!(p06==p04))
+		{
+			
+			p05.style.borderColor="red";
+			sp03.style.color="red";
+			sp03.innerHTML="两次密码不一致";
+		}
+		else
+		{
+			p05.style.borderColor="black";
+			sp03.style.color="white";
+			sp03.innerHTML="";
+		}
+		//判断身份证
+		if(p08.length<18)
+		{
+			p07.style.borderColor="red";
+			sp04.style.color="red";
+			sp04.innerHTML="请输入正确的身份证号";
+		}
+		else
+		{
+			p07.style.borderColor="black";
+			sp04.style.color="white";
+			sp04.innerHTML="";
+		}
+	}
+   </script>
+</body>
+</html>
